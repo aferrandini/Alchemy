@@ -1,0 +1,292 @@
+<html>
+<head>
+<title>Laboratorio tecnol&oacute;gico de Neosistec</title>
+<link rel="stylesheet" media="all"
+	href="/css/ui-lightness/jquery-ui-1.8.10.custom.css" type="text/css" />
+<script type="text/javascript" src="/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-1.8.10.custom.min.js"></script>
+
+<style type="text/css">
+body,div,td,ul,li {
+	padding: 0px;
+	margin: 0px;
+	font-family: Verdana;
+	font-size: 11px;
+	color: #444;
+}
+
+ul {
+	
+}
+
+li {
+	list-style-image: url("/images/list_style.png");
+	padding: 4px;
+}
+
+div.item {
+	float: left;
+	border: 1px solid #ccc;
+	padding: 20px;
+	margin: 10px;
+	margin-right: 0px;
+	width: 100px;
+	height: 100px;
+	z-index: 199;
+}
+
+div.container {
+	width: 335px;
+	height: 394px;
+	border: 1px solid #ccc;
+	position: absolute;
+	top: 231px;
+	right: 0px;
+	z-index: 99;
+	margin: 10px;
+	padding: 20px;
+}
+
+h1 {
+	padding: 0px;
+	margin: 0px;
+	font-family: Verdana;
+	font-size: 20px;
+	color: #444;
+}
+
+div.resultado {
+	height: 394px;
+	border: 1px solid #ccc;
+	padding: 20px;
+	margin: 10px;
+	margin-right: 400px;
+}
+
+div.cabecera {
+	padding-bottom: 4px;
+	border-bottom: 2px solid #444;
+	position: relative;
+}
+</style>
+</head>
+
+<body>
+<div class="cabecera">
+	<div style="position: absolute; bottom: 10px; right: 10px; z-index: 9999; font-size: 20px">
+		Has encontrado <span id="encontrados">0</span> de 10
+	</div>
+	<img src="/images/logo_neosistec.png" style="margin-left: 10px;" />
+</div>
+
+<div style="height: 150px">
+<div id="blackberry" align="center" text="Tel&eacute;fono m&oacute;vil"
+	class="ui-corner-all item"><img src="/images/blackberry.png" />
+</div>
+
+<div id="camara" align="center" text="C&aacute;mara de fotos"
+	class="ui-corner-all item"><img src="/images/camara.png" /></div>
+
+<div id="satelite" align="center" text="Sat&eacute;lite"
+	class="ui-corner-all item"><img src="/images/satelite.png" /></div>
+
+<div id="coche" align="center" text="Coche" class="ui-corner-all item">
+<img src="/images/coche.png" /></div>
+
+<div id="neosistec" align="center" text="Neosistec"
+	class="ui-corner-all item"><img src="/images/neosistec.png" /></div>
+</div>
+
+<div class="ui-corner-all resultado">
+<h1>Resultado</h1>
+<div class="ui-corner-all">
+	<div id="items" style="padding: 10px">
+	<ul id="listItems">
+		<li id="item1">Sin item</li>
+		<li id="item2">Sin item</li>
+		<li id="item3">Sin item</li>
+	</ul>
+	</div>
+	
+	<div id="resultado" align="center"></div>
+</div>
+
+<div class="ui-corner-all container" align="center"><img
+	id="batidora" src="/images/batidora.png" />
+	<br />
+	<br />
+	<div style="position: absolute; bottom: 10px; width: 335px" align="center">
+	<input name="btnLimpiar"
+		class="ui-state-default ui-button ui-corner-all" type="button"
+		value="LIMPIAR" onclick="javascript:limpiar()" /> <input
+		name="btnMezclar" class="ui-state-default ui-button ui-corner-all"
+		type="button" value="MEZCLAR" onclick="javascript:mezclar()" />
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	var encontrados = [];
+	
+	var items = [];
+
+	var resultados = [];
+	/* Todos iguales */
+	resultados.push([ '00003', 'neosistec' ]); // Neosistec
+	resultados.push([ '00030', 'coche' ]); // Coche
+	resultados.push([ '00300', 'satelite' ]); // Satelite
+	resultados.push([ '03000', 'camara' ]); // Camara
+	resultados.push([ '30000', 'blackberry' ]); // BlackBerry
+
+	/* Dos y uno */
+	resultados.push([ '00012', 'carfinder' ]); // Carfinder
+	resultados.push([ '00102', 'gpsplus' ]); // Gpsplus
+	resultados.push([ '01002', 'sgi' ]); // Sgi
+	resultados.push([ '10002', 'neosistec' ]); // Neosistec
+
+	resultados.push([ '00021', 'carfinder' ]); // Carfinder
+	resultados.push([ '00120', 'carfinder' ]); // Carfinder
+	resultados.push([ '01020', 'policiacieza' ]); // Policia cieza
+	resultados.push([ '10020', 'carfinder' ]); // Carfinder
+
+	resultados.push([ '00201', 'gpsplus' ]); // Gpsplus
+	resultados.push([ '00210', 'carfinder' ]); // Carfinder
+	resultados.push([ '01200', 'bbplaces' ]); //
+	resultados.push([ '10200', 'gpsplus' ]); //
+
+	resultados.push([ '02001', 'bbplaces' ]); //
+	resultados.push([ '02010', 'policiacieza' ]); //
+	resultados.push([ '02100', 'bbplaces' ]); //
+	resultados.push([ '12000', 'bbplaces' ]); //
+
+	resultados.push([ '20001', 'sgi' ]); //
+	resultados.push([ '20010', 'carfinder' ]); //
+	resultados.push([ '20100', 'gpsplus' ]); //
+	resultados.push([ '21000', 'bbplaces' ]); //
+
+	/* Todos diferentes */
+	resultados.push([ '00111', 'carfinder' ]); //
+	resultados.push([ '01011', 'policiacieza' ]); //
+	resultados.push([ '10011', 'carfinder' ]); //
+	resultados.push([ '01101', 'bbplaces' ]); //
+	resultados.push([ '10101', 'gpsplus' ]); //
+	resultados.push([ '11001', 'sgi' ]); //
+
+	resultados.push([ '01110', 'policiacieza' ]); //
+	resultados.push([ '11010', 'policiacieza' ]); //
+	resultados.push([ '10110', 'carfinder' ]); //
+
+	resultados.push([ '11100', 'bbplaces' ]); //
+
+	var resultadosMap =  [];
+	resultadosMap['blackberry'] = [ 'Tel&eacute;fono m&oacute;vil / BlackBerry', '/images/blackberry.png' ];
+	resultadosMap['camara'] = [ 'C&aacute;mara de fotos', '/images/camara.png' ];
+	resultadosMap['satelite'] = [ 'Sat&eacute;lite', '/images/satelite.png' ];
+	resultadosMap['coche'] = [ 'Coche', '/images/coche.png' ];
+	resultadosMap['neosistec'] = [ 'Neosistec', '/images/neosistec.png' ];
+
+	resultadosMap['bbplaces'] = [ 'bbPlaces', '/images/bbplaces.png' ];
+	resultadosMap['policiacieza'] = [ 'Polic&iacute;a de Cieza', '/images/policiacieza.png' ];
+	resultadosMap['sgi'] = [ 'SGI', '/images/sgi.png' ];
+	resultadosMap['carfinder'] = [ 'CarFinder', '/images/carfinder.png' ];
+	resultadosMap['gpsplus'] = [ 'GPS+', '/images/gpsplus.png' ];
+
+	$(document).ready(function() {
+		$('.ui-button').hover(function() {
+			$(this).addClass('ui-state-hover');
+		}, function() {
+			$(this).removeClass('ui-state-hover');
+		});
+
+		$("div.item").draggable({
+			revert : false,
+			helper : "clone"
+		});
+		$("div.container").droppable({
+			drop : function(event, ui) {
+				if (items.length < 3) {
+					items.push(ui.draggable.attr('id'));
+
+					if (items.length == 0) {
+						$('#batidora').attr('src', '/images/batidora.png');
+					} else if (items.length == 1) {
+						$('#batidora').attr('src', '/images/batidora30.png');
+						$('#item1').text(ui.draggable.attr('text'));
+					} else if (items.length == 2) {
+						$('#batidora').attr('src', '/images/batidora70.png');
+						$('#item2').text(ui.draggable.attr('text'));
+					} else {
+						$('#batidora').attr('src', '/images/batidora100.png');
+						$('#item3').text(ui.draggable.attr('text'));
+					}
+				} else {
+					$('#resultado').html("La batidora est&aacute; llena...");
+					return false;
+				}
+			}
+		});
+	});
+
+	function limpiar() {
+		items = [];
+		$('#batidora').attr('src', '/images/batidora.png');
+		$('#item1').text('Sin item');
+		$('#item2').text('Sin item');
+		$('#item3').text('Sin item');
+		$('#resultado').text('');
+	}
+
+	function mezclar() {
+		if(items.length<3) {
+			$('#resultado').html("<h1>Debes llenar la batidora!</h1>");
+			return false;
+		}
+		
+		$('#batidora').effect('shake', 80);
+		
+		var resultado = '';
+
+		var blackberry = 0;
+		var camara = 0;
+		var satelite = 0;
+		var coche = 0;
+		var neosistec = 0;
+
+		for ( var i = 0; i < items.length; i++) {
+			if (items[i] == 'blackberry')
+				blackberry++;
+			else if (items[i] == 'camara')
+				camara++;
+			else if (items[i] == 'satelite')
+				satelite++;
+			else if (items[i] == 'coche')
+				coche++;
+			else if (items[i] == 'neosistec')
+				neosistec++;
+		}
+
+		var key = '' + blackberry + camara + satelite + coche + neosistec;
+
+		resultado = '';
+		for ( var i = 0; i < resultados.length; i++) {
+			if (resultados[i][0] == key) {
+				resultado = resultados[i][1];
+				break;
+			}
+		}
+
+		for ( var i = 0; i < encontrados.length; i++) {
+			if(encontrados[i] == resultado) {
+				break;
+			}
+		}
+		
+		if(i>=encontrados.length) {
+			encontrados.push(resultado);
+		}
+		
+		$('#encontrados').text(encontrados.length);
+		$('#resultado').html('<h1>' + resultadosMap[resultado][0] +'</h1><br/><img src="'+resultadosMap[resultado][1]+'" />');
+	}
+</script>
+</html>

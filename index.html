@@ -2,9 +2,9 @@
 <head>
 <title>Laboratorio tecnol&oacute;gico de Neosistec</title>
 <link rel="stylesheet" media="all"
-	href="/css/ui-lightness/jquery-ui-1.8.10.custom.css" type="text/css" />
-<script type="text/javascript" src="/js/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="/js/jquery-ui-1.8.10.custom.min.js"></script>
+	href="css/ui-lightness/jquery-ui-1.8.10.custom.css" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.10.custom.min.js"></script>
 
 <style type="text/css">
 body,div,td,ul,li {
@@ -16,11 +16,11 @@ body,div,td,ul,li {
 }
 
 ul {
-	
+
 }
 
 li {
-	list-style-image: url("/images/list_style.png");
+	list-style-image: url("images/list_style.png");
 	padding: 4px;
 }
 
@@ -76,25 +76,25 @@ div.cabecera {
 	<div style="position: absolute; bottom: 10px; right: 10px; z-index: 9999; font-size: 20px">
 		Has encontrado <span id="encontrados">0</span> de 10
 	</div>
-	<img src="/images/logo_neosistec.png" style="margin-left: 10px;" />
+	<img src="images/logo_neosistec.png" style="margin-left: 10px;" />
 </div>
 
 <div style="height: 150px">
 <div id="blackberry" align="center" text="Tel&eacute;fono m&oacute;vil"
-	class="ui-corner-all item"><img src="/images/blackberry.png" />
+	class="ui-corner-all item"><img src="images/blackberry.png" />
 </div>
 
 <div id="camara" align="center" text="C&aacute;mara de fotos"
-	class="ui-corner-all item"><img src="/images/camara.png" /></div>
+	class="ui-corner-all item"><img src="images/camara.png" /></div>
 
 <div id="satelite" align="center" text="Sat&eacute;lite"
-	class="ui-corner-all item"><img src="/images/satelite.png" /></div>
+	class="ui-corner-all item"><img src="images/satelite.png" /></div>
 
 <div id="coche" align="center" text="Coche" class="ui-corner-all item">
-<img src="/images/coche.png" /></div>
+<img src="images/coche.png" /></div>
 
 <div id="neosistec" align="center" text="Neosistec"
-	class="ui-corner-all item"><img src="/images/neosistec.png" /></div>
+	class="ui-corner-all item"><img src="images/neosistec.png" /></div>
 </div>
 
 <div class="ui-corner-all resultado">
@@ -107,12 +107,12 @@ div.cabecera {
 		<li id="item3">Sin item</li>
 	</ul>
 	</div>
-	
+
 	<div id="resultado" align="center"></div>
 </div>
 
 <div class="ui-corner-all container" align="center"><img
-	id="batidora" src="/images/batidora.png" />
+	id="batidora" src="images/batidora.png" />
 	<br />
 	<br />
 	<div style="position: absolute; bottom: 10px; width: 335px" align="center">
@@ -127,7 +127,7 @@ div.cabecera {
 
 <script type="text/javascript">
 	var encontrados = [];
-	
+
 	var items = [];
 
 	var resultados = [];
@@ -179,17 +179,17 @@ div.cabecera {
 	resultados.push([ '11100', 'bbplaces' ]); //
 
 	var resultadosMap =  [];
-	resultadosMap['blackberry'] = [ 'Tel&eacute;fono m&oacute;vil / BlackBerry', '/images/blackberry.png' ];
-	resultadosMap['camara'] = [ 'C&aacute;mara de fotos', '/images/camara.png' ];
-	resultadosMap['satelite'] = [ 'Sat&eacute;lite', '/images/satelite.png' ];
-	resultadosMap['coche'] = [ 'Coche', '/images/coche.png' ];
-	resultadosMap['neosistec'] = [ 'Neosistec', '/images/neosistec.png' ];
+	resultadosMap['blackberry'] = [ 'Tel&eacute;fono m&oacute;vil / BlackBerry', 'images/blackberry.png' ];
+	resultadosMap['camara'] = [ 'C&aacute;mara de fotos', 'images/camara.png' ];
+	resultadosMap['satelite'] = [ 'Sat&eacute;lite', 'images/satelite.png' ];
+	resultadosMap['coche'] = [ 'Coche', 'images/coche.png' ];
+	resultadosMap['neosistec'] = [ 'Neosistec', 'images/neosistec.png' ];
 
-	resultadosMap['bbplaces'] = [ 'bbPlaces', '/images/bbplaces.png' ];
-	resultadosMap['policiacieza'] = [ 'Polic&iacute;a de Cieza', '/images/policiacieza.png' ];
-	resultadosMap['sgi'] = [ 'SGI', '/images/sgi.png' ];
-	resultadosMap['carfinder'] = [ 'CarFinder', '/images/carfinder.png' ];
-	resultadosMap['gpsplus'] = [ 'GPS+', '/images/gpsplus.png' ];
+	resultadosMap['bbplaces'] = [ 'bbPlaces', 'images/bbplaces.png' ];
+	resultadosMap['policiacieza'] = [ 'Polic&iacute;a de Cieza', 'images/policiacieza.png' ];
+	resultadosMap['sgi'] = [ 'SGI', 'images/sgi.png' ];
+	resultadosMap['carfinder'] = [ 'CarFinder', 'images/carfinder.png' ];
+	resultadosMap['gpsplus'] = [ 'GPS+', 'images/gpsplus.png' ];
 
 	$(document).ready(function() {
 		$('.ui-button').hover(function() {
@@ -208,15 +208,15 @@ div.cabecera {
 					items.push(ui.draggable.attr('id'));
 
 					if (items.length == 0) {
-						$('#batidora').attr('src', '/images/batidora.png');
+						$('#batidora').attr('src', 'images/batidora.png');
 					} else if (items.length == 1) {
-						$('#batidora').attr('src', '/images/batidora30.png');
+						$('#batidora').attr('src', 'images/batidora30.png');
 						$('#item1').text(ui.draggable.attr('text'));
 					} else if (items.length == 2) {
-						$('#batidora').attr('src', '/images/batidora70.png');
+						$('#batidora').attr('src', 'images/batidora70.png');
 						$('#item2').text(ui.draggable.attr('text'));
 					} else {
-						$('#batidora').attr('src', '/images/batidora100.png');
+						$('#batidora').attr('src', 'images/batidora100.png');
 						$('#item3').text(ui.draggable.attr('text'));
 					}
 				} else {
@@ -229,7 +229,7 @@ div.cabecera {
 
 	function limpiar() {
 		items = [];
-		$('#batidora').attr('src', '/images/batidora.png');
+		$('#batidora').attr('src', 'images/batidora.png');
 		$('#item1').text('Sin item');
 		$('#item2').text('Sin item');
 		$('#item3').text('Sin item');
@@ -241,9 +241,9 @@ div.cabecera {
 			$('#resultado').html("<h1>Debes llenar la batidora!</h1>");
 			return false;
 		}
-		
+
 		$('#batidora').effect('shake', 80);
-		
+
 		var resultado = '';
 
 		var blackberry = 0;
@@ -280,11 +280,11 @@ div.cabecera {
 				break;
 			}
 		}
-		
+
 		if(i>=encontrados.length) {
 			encontrados.push(resultado);
 		}
-		
+
 		$('#encontrados').text(encontrados.length);
 		$('#resultado').html('<h1>' + resultadosMap[resultado][0] +'</h1><br/><img src="'+resultadosMap[resultado][1]+'" />');
 	}
